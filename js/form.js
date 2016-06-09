@@ -24,10 +24,10 @@ angular.module('nsuForm')
   $scope.form = [
     "*",
     {
-   "key": 'multiselect',
-   "type": 'strapselect',
-   "options": { 
-    "multiple": "true"
+     "key": 'multiselect',
+     "type": 'strapselect',
+     "options": { 
+      "multiple": "true"
    },
    "titleMap": [
         {"value": 'value1', "name": 'text1'},
@@ -38,13 +38,13 @@ angular.module('nsuForm')
     { type: 'submit', title: 'Submit' },
   ];
   
-   $scope.submitForm = function(form) {
+   $scope.submitForm = function(form, data) {
     // First we broadcast an event so all fields validate themselves
     debugger
     $scope.$broadcast('schemaFormValidate');
     // Then we check if the form is valid
     if (form.$valid) {
-      alert('You did it!');
+      nsuService.post($scope.model);
     }
   };
 
