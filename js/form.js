@@ -1,6 +1,7 @@
 /*global angular*/
-angular.module('myModule', ['schemaForm', 'mgcrea.ngStrap'])
-       .controller('FormController', function($scope) {
+
+angular.module('nsuForm')
+.controller('FormController', function($scope, nsuService) {
   $scope.schema = {
     type: "object",
     properties: {
@@ -30,7 +31,12 @@ angular.module('myModule', ['schemaForm', 'mgcrea.ngStrap'])
    ]
  },
     { type: 'submit', title: 'Cancel', onClick: function(){ console.log($scope.model);  } },
-    { type: 'button', style: 'btn-danger', title: 'Cancel', onClick: function(){ console.log($scope.model);  } }
+    { type: 'button', style: 'btn-danger', title: 'Cancel', 
+      onClick: function(){
+        debugger
+        nsuService.post($scope.model);
+      }
+    }
   ];
 
   $scope.model = {};
