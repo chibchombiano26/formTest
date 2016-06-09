@@ -13,7 +13,12 @@ angular.module('nsuForm')
         type: "string",
         format: "date"
       }
-    }
+    },
+    "required": [
+      "firstName",
+      "lastName",
+      "email"
+    ]
   };
 
   $scope.form = [
@@ -30,14 +35,18 @@ angular.module('nsuForm')
         {"value": 'value3', "name": 'long very very long label3'}
    ]
  },
-    { type: 'submit', title: 'Cancel', onClick: function(){ console.log($scope.model);  } },
-    { type: 'button', style: 'btn-danger', title: 'Cancel', 
-      onClick: function(){
-        debugger
-        nsuService.post($scope.model);
-      }
-    }
+    { type: 'submit', title: 'Submit' },
   ];
+  
+   $scope.submitForm = function(form) {
+    // First we broadcast an event so all fields validate themselves
+    debugger
+    $scope.$broadcast('schemaFormValidate');
+    // Then we check if the form is valid
+    if (form.$valid) {
+      alert('You did it!');
+    }
+  };
 
   $scope.model = {};
 });

@@ -34,7 +34,7 @@
 	<body>
 		
 		<div ng-controller="FormController">
-		    <form sf-schema="schema" sf-form="form" sf-model="model"></form>
+		    <form name="ngform" sf-schema="schema" sf-form="form" sf-model="model" ng-submit="submitForm(ngform,modelData)"></form>
 		</div>
 		
 	</body>
